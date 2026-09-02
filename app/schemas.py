@@ -1,5 +1,5 @@
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr,  ConfigDict
 from datetime import datetime
 
 # --- User schemas ---
@@ -13,9 +13,7 @@ class UserCreate(UserBase):
 class UserOut(UserBase):
     id: int
     created_at: datetime
-
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 # --- Item schemas ---
 class ItemBase(BaseModel):
@@ -28,6 +26,8 @@ class ItemCreate(ItemBase):
 class ItemOut(ItemBase):
     id: int
     owner_id: int
+    model_config = ConfigDict(from_attributes=True)
 
-    class Config:
-        orm_mode = True
+class Token(BaseModel):
+        access_token: str
+        token_type: str = "bearer"
