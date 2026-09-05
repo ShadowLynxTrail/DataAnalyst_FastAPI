@@ -40,13 +40,10 @@
     ```bash
     uvicorn app.main:app --reload 
 
-
-
 ## Эндпоинты
 - `POST /auth/register`
 - `POST /auth/login`
 - `GET /analytics/summary`
-...
 
 ## Автор
 ShadowLynxTrail
