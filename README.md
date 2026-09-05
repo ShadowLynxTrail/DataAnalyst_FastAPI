@@ -33,6 +33,30 @@
    ```bash
    git clone https://github.com/ShadowLynxTrail/DataAnalyst_FastAPI.git
    cd DataAnalyst_FastAPI
-=======
- Test project with FastaAPI + Data Analyst in medical segment 
->>>>>>> e5c172b985c893eceec232f946e0e828de7d79dc
+2. Установи зависимости:  
+    ```bash
+poetry install
+3. Запусти: 
+    ```bash
+uvicorn app.main:app --reload 
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+## Эндпоинты
+- `POST /auth/register`
+- `POST /auth/login`
+- `GET /analytics/summary`
+...
+
+## Автор
+ShadowLynxTrail
+
