@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 # Medical Analytics API
 
