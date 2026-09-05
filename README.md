@@ -38,7 +38,7 @@
     poetry install
 3. Запусти: 
     ```bash
-uvicorn app.main:app --reload 
+    uvicorn app.main:app --reload 
 
 
 
