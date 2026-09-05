@@ -1,0 +1,18 @@
+price
+year
+month
+day
+dayofweek
+category_Диагностическое оборудование
+category_Лабораторная диагностика
+category_Расходные материалы
+region_Казань
+region_Москва
+region_Новосибирск
+region_Санкт-Петербург
+product_name_Катетеры
+product_name_Набор для ветеринарии
+product_name_Перчатки нитриловые
+product_name_Реагент для гематологии
+product_name_Тест-система COVID-19
+product_name_Шприцы 5 мл
