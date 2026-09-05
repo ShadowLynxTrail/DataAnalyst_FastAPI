@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Medical Analytics API
 
@@ -32,3 +33,6 @@
    ```bash
    git clone https://github.com/ShadowLynxTrail/DataAnalyst_FastAPI.git
    cd DataAnalyst_FastAPI
+=======
+ Test project with FastaAPI + Data Analyst in medical segment 
+>>>>>>> e5c172b985c893eceec232f946e0e828de7d79dc
