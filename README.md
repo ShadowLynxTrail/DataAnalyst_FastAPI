@@ -33,15 +33,16 @@
 
 Пример запроса:
 ```json
-{
+  {
   "date": "2023-01-01",
   "category": "Расходные материалы",
   "region": "Москва",
   "product_name": "Шприцы 5 мл",
   "price": 15.0
+  }
  
-## Запуск локально
-
+ ```
+  ##Запуск локально
 1. Клонируй репозиторий:
    ```bash
    git clone https://github.com/ShadowLynxTrail/DataAnalyst_FastAPI.git
