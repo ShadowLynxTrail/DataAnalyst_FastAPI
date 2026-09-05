@@ -5,6 +5,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
+from app.models import User, Item, Sale
+
 from app.database import Base, get_db  # добавили get_db
 from app.main import app
 
@@ -31,6 +33,12 @@ app.dependency_overrides[get_db] = override_get_db
 @pytest.fixture
 def client():
     Base.metadata.create_all(bind=engine)
+    from app.models import User
+    db = TestingSessionLocal()
+    db.query(User).delete()
+    db.commit()
+    db.close()
     with TestClient(app) as c:
         yield c
     Base.metadata.drop_all(bind=engine)
+

@@ -22,7 +22,7 @@ def predict_sales_endpoint(
     db: Session = Depends(get_db)
 ):
     try:
-        result = predict_sales(request.dict())
+        result = predict_sales(request.model_dump())
         return {"predicted_quantity": result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -1,10 +1,11 @@
 from fastapi.testclient import TestClient
 from app.main import app
+import uuid
 
 client = TestClient(app)
 
 
-def test_predict_requires_auth():
+def test_predict_requires_auth(client):
     response = client.post("/predict/sales", json={
         "date": "2023-01-01",
         "category": "Расходные материалы",
@@ -15,21 +16,28 @@ def test_predict_requires_auth():
     assert response.status_code == 401
 
 
-def test_predict_with_auth():
-    # Регистрируем пользователя
-    client.post("/auth/register", json={
-        "email": "test@example.com",
-        "name": "Test",
-        "password": "password"
-    })
-    # Логинимся
-    login = client.post("/auth/login", json={
-        "email": "test@example.com",
-        "password": "password"
-    })
-    token = login.json()["access_token"]
-    headers = {"Authorization": f"Bearer {token}"}
+def test_predict_with_auth(client):
+    email = f"test_{uuid.uuid4().hex}@example.com"
+    password = "password"
 
+    # Регистрация
+    response = client.post("/auth/register", json={
+        "email": email,
+        "name": "Test",
+        "password": password
+    })
+    assert response.status_code == 200, response.text
+
+    # Логин
+    response = client.post("/auth/login", json={
+        "email": email,
+        "password": password
+    })
+    assert response.status_code == 200, response.text
+    token = response.json()["access_token"]
+
+    # Предсказание
+    headers = {"Authorization": f"Bearer {token}"}
     response = client.post("/predict/sales", headers=headers, json={
         "date": "2023-01-01",
         "category": "Расходные материалы",
@@ -39,3 +47,5 @@ def test_predict_with_auth():
     })
     assert response.status_code == 200
     assert "predicted_quantity" in response.json()
+
+
