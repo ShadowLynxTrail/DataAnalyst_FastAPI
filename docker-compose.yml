@@ -1,5 +1,3 @@
-
-
 services:
   db:
     image: postgres:15
@@ -13,5 +11,20 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  web:
+    build: .
+    container_name: fastapi_app
+    environment:
+      DATABASE_URL: postgresql://myuser:mypassword@db:5432/mydb
+      SECRET_KEY: your-secret-key-here
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    command: >
+      sh -c "alembic upgrade head &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000"
+
 volumes:
   postgres_data:
+
