@@ -26,6 +26,20 @@
   - `/analytics/top_products` — топ товаров
 - Alembic-миграции для управления схемой БД
 
+## ML-модель
+
+Для предсказания количества продаж используется модель RandomForestRegressor, обученная на исторических данных. Модель сохранена в `app/ml_models/`.
+
+
+Пример запроса:
+```json
+{
+  "date": "2023-01-01",
+  "category": "Расходные материалы",
+  "region": "Москва",
+  "product_name": "Шприцы 5 мл",
+  "price": 15.0
+ 
 ## Запуск локально
 
 1. Клонируй репозиторий:
@@ -43,6 +57,7 @@
 - `POST /auth/register`
 - `POST /auth/login`
 - `GET /analytics/summary`
+- `POST /predict/sales` (требует авторизацию)
 
 ## Автор
 ShadowLynxTrail
