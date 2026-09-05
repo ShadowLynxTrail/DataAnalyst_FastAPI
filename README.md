@@ -35,19 +35,10 @@
    cd DataAnalyst_FastAPI
 2. Установи зависимости:  
     ```bash
-poetry install
+    poetry install
 3. Запусти: 
     ```bash
 uvicorn app.main:app --reload 
-
-
-
-
-
- 
- 
-
-
 
 
 
