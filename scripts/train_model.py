@@ -13,6 +13,7 @@ load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://myuser:mypassword@localhost:5432/mydb")
 engine = create_engine(DATABASE_URL)
 
+
 def load_data():
     df = pd.read_sql("SELECT * FROM sales", engine)
     return df
@@ -66,9 +67,9 @@ def train_model():
     features_list = list(X.columns)
 
     # Сохраняем features_list
-    with open('app/ml_models/features_list.txt', 'w') as f:
-        for item in features_list:
-            f.write(item + '\n')
+    with open('app/ml_models/features_list.txt', 'w', encoding='utf-8') as f:
+        for feature in features_list:
+            f.write(feature + '\n')
 
 if __name__ == "__main__":
     train_model()

@@ -20,7 +20,6 @@ def test_predict_with_auth(client):
     email = f"test_{uuid.uuid4().hex}@example.com"
     password = "password"
 
-    # Регистрация
     response = client.post("/auth/register", json={
         "email": email,
         "name": "Test",
@@ -28,7 +27,6 @@ def test_predict_with_auth(client):
     })
     assert response.status_code == 200, response.text
 
-    # Логин
     response = client.post("/auth/login", json={
         "email": email,
         "password": password
@@ -36,7 +34,6 @@ def test_predict_with_auth(client):
     assert response.status_code == 200, response.text
     token = response.json()["access_token"]
 
-    # Предсказание
     headers = {"Authorization": f"Bearer {token}"}
     response = client.post("/predict/sales", headers=headers, json={
         "date": "2023-01-01",
@@ -45,7 +42,7 @@ def test_predict_with_auth(client):
         "product_name": "Шприцы 5 мл",
         "price": 15.0
     })
-    assert response.status_code == 200
+    assert response.status_code == 200, response.text
     assert "predicted_quantity" in response.json()
 
 

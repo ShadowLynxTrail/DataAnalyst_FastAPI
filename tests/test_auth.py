@@ -5,5 +5,5 @@ def test_register(client):
         "name": "Test User",
         "password": "testpassword"
     })
-    assert response.status_code == 200
+    assert response.status_code == 200, response.text
     assert response.json()["email"] == "test@example.com"
